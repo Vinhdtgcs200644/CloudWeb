@@ -20,11 +20,13 @@ const fileStorageEngine = multer.diskStorage({
 
           fs.readdir("./trash", (err, files_) => {
                files_.forEach(item => {
-                    fs.unlink("./trash"+"/"+item, function (err) {
-                         if (err) throw err;
-                    });
-                    console.log("Trash cleared successfully.");
+                    if(item!="here"){
+                         fs.unlink("./trash"+"/"+item, function (err) {
+                              if (err) throw err;
+                         });
+                    }
                });
+               console.log("Trash cleared successfully.");
           });
 
           if(
